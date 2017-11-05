@@ -1,0 +1,38 @@
+{
+  "name": "zabbix.js",
+  "version": "0.9.0",
+  "description": "Zabbix sender (via zabbix trapper protocol)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/131/zabbix.js.git"
+  },
+  "keywords": [
+    "zabbix_sender",
+    "zabbix",
+    "trapper"
+  ],
+  "author": "Francois Leurent <131.js@cloudyks.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/131/zabbix.js/issues"
+  },
+  "homepage": "https://github.com/131/zabbix.js#readme",
+  "dependencies": {
+    "nyks": "^4.1.10"
+  },
+  "scripts": {
+    "jscs": "jscs --config=node_modules/ivs-jssc/ivs-node.jscsrc index.js",
+    "eslint": "eslint --config=node_modules/ivs-jssc/ivs-node.eslintrc.js index.js",
+    "checkall": "npm run jscs && npm run eslint",
+    "mocha": "node node_modules/mocha/bin/_mocha",
+    "test": "node node_modules/istanbul/lib/cli.js cover --report text-summary --report html --report lcov  node_modules/mocha/bin/_mocha --",
+    "coveralls": "npm install coveralls && node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "istanbul": "^1.1.0-alpha.1",
+    "ivs-jssc": "^2.1.1",
+    "mocha": "^3.1.2"
+  }
+}
