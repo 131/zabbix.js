@@ -1,4 +1,4 @@
-An es7 dumb & efficient TCP client for zabbix (abide to zabbix trapper protocol)
+An es7 efficient TCP client for zabbix (abide to zabbix trapper protocol)
 
 [![Build Status](https://travis-ci.org/131/zabbix.js.svg?branch=master)](https://travis-ci.org/131/zabbix.js)
 [![Coverage Status](https://coveralls.io/repos/github/131/zabbix.js/badge.svg?branch=master)](https://coveralls.io/github/131/zabbix.js?branch=master)

@@ -21,17 +21,34 @@ class ZabbixSender {
     }, opts);
   }
 
-  async send(/*[hostname,] */ dict) { //items : {k,v}
+
+
+  async sendv(host, key, value) /**
+  * @param string [host=]
+  */ {
+
+    var args = [].slice.apply(arguments);
+    value = args.pop();
+    key   = args.pop();
+    host = args.pop();
+
+    return this.send(host, { [key] : value });
+  }
+
+  async send(host, dict) /**
+  * @param string [host=]
+  */ {
 
     var args = [].slice.apply(arguments);
     dict = args.pop();
-    var host  = args.pop() || this.hostname;
+    host = args.pop() || this.hostname;
 
     var items = [];
     for(var key in dict)
-      items.push({ host, key, value : dict[key]});
+      items.push({host, key, value : dict[key]});
 
     var payload = ZabbixSender.prepareData(items);
+
 
     var timeout = defer();
     var i = setTimeout(timeout.reject, this.timeout);
@@ -44,7 +61,7 @@ class ZabbixSender {
       client.write(payload);
       let response = await Promise.race([drain(client), timeout]);
 
-      if(response.slice(0, ZBXD_HEADER.length).equals(ZBXD_HEADER))
+      if(!response.slice(0, ZBXD_HEADER.length).equals(ZBXD_HEADER))
         throw "got invalid response from server";
 
       return JSON.parse(response.slice(13));
