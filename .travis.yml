@@ -5,5 +5,7 @@ after_script:
   - npm run coveralls
 deploy:
   provider: npm
-  email: "131.js@cloudyks.org"
-  api_key: "YOUR_AUTH_TOKEN"
+  email: 131.frodon@cloudyks.org
+  api_key: $NPM_TOKEN
+  on:
+    tags: true
