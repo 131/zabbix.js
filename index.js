@@ -39,9 +39,9 @@ class ZabbixSender {
     var args = [].slice.apply(arguments);
     value = args.pop();
     key   = args.pop();
-    host = args.pop();
+    host = args.pop() || this.hostname;
 
-    return this.send( [{ host, key , value }]);
+    return this.send([{host, key, value}]);
   }
 
 
