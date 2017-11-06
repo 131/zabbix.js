@@ -1,6 +1,6 @@
 {
   "name": "zabbix.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Zabbix sender (via zabbix trapper protocol)",
   "main": "index.js",
   "repository": {
@@ -27,7 +27,7 @@
     "eslint": "eslint --config=node_modules/ivs-jssc/ivs-node.eslintrc.js index.js",
     "checkall": "npm run jscs && npm run eslint",
     "mocha": "node node_modules/mocha/bin/_mocha",
-    "cover" : "node node_modules/istanbul/lib/cli.js cover --report text-summary --report html --report lcov  node_modules/mocha/bin/_mocha --",
+    "cover": "node node_modules/istanbul/lib/cli.js cover --report text-summary --report html --report lcov  node_modules/mocha/bin/_mocha --",
     "test": "npm run checkall && npm run cover",
     "coveralls": "npm install coveralls && node ./node_modules/coveralls/bin/coveralls.js < ./coverage/lcov.info"
   },
