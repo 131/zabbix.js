@@ -20,7 +20,7 @@ class ZabbixSender {
       host = ini.parse(fs.readFileSync(zabbix_conf_path, 'utf-8')).Server;
 
     if(typeof opts == "string")
-      host : opts;
+      opts = {host : opts};
 
     Object.assign(this, {
       host,
