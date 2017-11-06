@@ -1,6 +1,6 @@
 {
   "name": "zabbix.js",
-  "version": "0.10.0",
+  "version": "1.0.0",
   "description": "Zabbix sender (via zabbix trapper protocol)",
   "main": "index.js",
   "repository": {
