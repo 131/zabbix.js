@@ -41,23 +41,16 @@ class ZabbixSender {
     key   = args.pop();
     host = args.pop();
 
-    return this.send(host, { [key] : value });
+    return this.send( [{ host, key , value }]);
   }
 
-  async send(host, dict) /**
-  * @param string [host=]
+
+
+  async send(items) /**
+  * format items as [ {host, key, value} ]
   */ {
 
-    var args = [].slice.apply(arguments);
-    dict = args.pop();
-    host = args.pop() || this.hostname;
-
-    var items = [];
-    for(var key in dict)
-      items.push({host, key, value : dict[key]});
-
     var payload = ZabbixSender.prepareData(items);
-
 
     var timeout = defer();
     var i = setTimeout(timeout.reject, this.timeout);

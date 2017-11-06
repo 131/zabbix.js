@@ -10,7 +10,7 @@ An es7 efficient TCP client for zabbix (abide to zabbix trapper protocol)
 var Zabbix = require('zabbix.js');
 var sender = new Zabbix('somezabbixhost');
 
-sender.send({ "somekey": 42 }); //await me if you want
+sender.sendv("somekey", 42); //await me if you want
 ```
 
 
