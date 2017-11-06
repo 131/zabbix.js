@@ -4,17 +4,26 @@ const net = require('net');
 const os  = require('os');
 const defer = require('nyks/promise/defer');
 const drain = require('nyks/stream/drain');
+const fs    = require('fs');
+const ini   = require('ini');
+
+const zabbix_conf_path = '/etc/zabbix/zabbix_agentd.conf';
 
 const ZBXD_HEADER  = new Buffer('ZBXD\x01');
 
 class ZabbixSender {
 
   constructor(opts) {
+    var host = 'localhost';
+
+    if(fs.existsSync(zabbix_conf_path))
+      host = ini.parse(fs.readFileSync(zabbix_conf_path, 'utf-8')).Server;
+
     if(typeof opts == "string")
-      opts = { host : opts};
+      host : opts;
 
     Object.assign(this, {
-      host : 'localhost',
+      host,
       port : 10051,
       timeout : 5000,
       hostname :  os.hostname(),

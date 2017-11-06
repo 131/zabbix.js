@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/131/zabbix.js#readme",
   "dependencies": {
+    "ini": "^1.3.4",
     "nyks": "^4.1.10"
   },
   "scripts": {
