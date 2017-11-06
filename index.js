@@ -56,6 +56,7 @@ class ZabbixSender {
     var i = setTimeout(timeout.reject, this.timeout);
 
     var client = new net.Socket();
+    client.on('error', timeout.reject);
 
     try {
       let connect = new Promise((resolve) => client.connect(this.port, this.host, resolve));
