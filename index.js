@@ -36,12 +36,27 @@ class ZabbixSender {
   * @param string [host=]
   */ {
 
-    var args = [].slice.apply(arguments);
+    var args = Array.from(arguments);
     value = args.pop();
     key   = args.pop();
     host = args.pop() || this.hostname;
 
     return this.send([{host, key, value}]);
+  }
+
+
+  async sendd(host, dict) /**
+  * @param string [host=]
+  */ {
+
+    var args = Array.from(arguments);
+    dict  = args.pop();
+    host = args.pop() || this.hostname;
+
+    var list = [];
+    for(var key in dict)
+      list.push({host, key, value : dict[key]});
+    return this.send(list);
   }
 
 
