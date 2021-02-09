@@ -65,6 +65,10 @@ class ZabbixSender {
   * format items as [ {host, key, value} ]
   */ {
 
+    for(var val of items) {
+      if(!('host' in val))
+        val.host = this.hostname;
+    }
     var payload = ZabbixSender.prepareData(items);
 
     var timeout = defer();

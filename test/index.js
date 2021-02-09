@@ -80,9 +80,24 @@ describe("Minimal mock suite", function() {
       { host : os.hostname(), key : 'value', value : 42 },
       { host : os.hostname(), key : 'foo', value : 'bar' }]
     );
+  });
+
+
+
+
+  it("should report mockv data", async function() {
+    var zabbix = new Zabbix({ host, port, hostname : 'foobar'});
+
+    var res = await zabbix.send([{key : 'value', value : 42}]);
+    expect(res).to.eql(ALLGOOD);
+    expect(buffer.data).to.eql([
+      { host : 'foobar', key : 'value', value : 42 },
+    ]);
 
 
   });
+
+
 
   it("should handler invalid response ", async function() {
     var zabbix = new Zabbix({ host, port });
